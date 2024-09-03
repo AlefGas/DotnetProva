@@ -1,16 +1,13 @@
 using Empresa.Data;
-using Empresa.Reapository;
-using Empresa.Reapository.Interface;
+using Empresa.Repository;
+using Empresa.Repository.Interface;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddDbContext<dbContext>(options =>
 options.UseOracle(builder.Configuration.GetConnectionString("OracleConnection")));
-
-builder.Services.AddScoped<IEmpregadoRepository, EmpregadoRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
